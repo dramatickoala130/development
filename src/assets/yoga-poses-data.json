@@ -1,0 +1,98 @@
+[
+    {
+        "name": "GARLAND",
+        "level": "Intermediate",
+        "type": "Seated",
+        "benefit": "Hips", 
+        "time": 25,
+        "image" : "images/garland.png"
+    },
+    {
+        "name": "UPWARD FORWARD FOLD",
+        "level": "Beginner",
+        "type": "Standing",
+        "benefit": "Back", 
+        "time": 30,
+        "image" : "images/fold.png"
+    },
+    {
+        "name": "STANDING HAND TO TOE",
+        "level": "Intermediate",
+        "type": "Standing",
+        "benefit": "Hips", 
+        "time": 15,
+        "image" : "images/hand_to_toe.png"
+    },
+    {
+        "name": "SUPINE PIGEON",
+        "level": "Beginner",
+        "type": "Supine",
+        "benefit": "Hips", 
+        "time": 30,
+        "image" : "images/pigeon.png"
+    },
+    {
+        "name": "CRANE",
+        "level": "Intermediate",
+        "type": "Seated",
+        "benefit": "Arms", 
+        "time": 5,
+        "image" : "images/crane.png"
+    },
+    {
+        "name": "HALF-BOUND LOTUS FORWARD FOLD",
+        "level": "Advanced",
+        "type": "Standing",
+        "benefit": "Hips", 
+        "time": 10,
+        "image" : "images/lotus.png"
+    },
+    {
+        "name": "EYE OF THE NEEDLE",
+        "level": "Beginner",
+        "type": "Seated",
+        "benefit": "Arms", 
+        "time": 30,
+        "image" : "images/needle.png"
+    },
+    {
+        "name": "PLOW",
+        "level": "Intermediate",
+        "type": "Supine",
+        "benefit": "Back", 
+        "time": 10,
+        "image" : "images/plow.png"
+    },
+    {
+        "name": "WHEEL POSE",
+        "level": "Advanced",
+        "type": "Supine",
+        "benefit": "Back", 
+        "time": 5,
+        "image" : "images/plow.png"
+    },
+    {
+        "name": "SEATED FORWARD BEND",
+        "level": "Beginner",
+        "type": "Seated",
+        "benefit": "Back", 
+        "time": 30,
+        "image" : "images/bend.png"
+    },
+    {
+        "name": "GODDESS SQUAT",
+        "level": "Beginner",
+        "type": "Standing",
+        "benefit": "Hips", 
+        "time": 15,
+        "image" : "images/goddess.png"
+    },
+    {
+        "name": "TRIANGLE",
+        "level": "Beginner",
+        "type": "Standing",
+        "benefit": "Arms", 
+        "time": 20,
+        "image" : "images/triangle.png"
+    }
+]
