@@ -69,7 +69,7 @@
         "type": "Supine",
         "benefit": "Back", 
         "time": 5,
-        "image" : "images/plow.png"
+        "image" : "images/wheel.png"
     },
     {
         "name": "SEATED FORWARD BEND",
