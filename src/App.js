@@ -8,7 +8,9 @@ import Nav from 'react-bootstrap/Nav';
 
 
 function App() {
-  const [type, setType] = useState("All");
+  const [type, setType] = useState("All"); // displays all poses
+  const [totalSeconds, setTotalSeconds] = useState(0); // displays total seconds to hold in favorites
+  const [list, setList] = useState([]); // initialize an empty array
   const [names, setNames] = useState([]);
 
   // lets users select a filter type
@@ -16,8 +18,7 @@ function App() {
     setType(eventKey);
   };
 
-
-  // filtering function
+  // filtering function for TYPES and BENEFITS
   const matchesFilterType = item => {
     // all items should be shown when no filter is selected
     if(type === "All") { 
@@ -26,29 +27,67 @@ function App() {
       return true
     } else if (type === item.benefit) {
       return true
+    } else if (type === "Favorites") {
+      return false
     } else {
       return false
     }
   }
 
+  // filters the complete data everytime the eventKey has been changed
   const filteredData = poseData.filter(matchesFilterType)
 
-  
+  // checking the state of the checkboxes for the favorites option
+  const [checkedState, setCheckedState] = useState(new Array(poseData.length).fill(false));
 
-  
-
-  // for favorites button right now
-  function handleClick(name) {
-    setNames([...names, name])
+  // function to handle the adding of the seconds in the favorites section
+  const handleClick = (position) => {
+    // marking the poses that have been added to favorites as true in the array
+    const updatedCheckState = checkedState.map((item, index) => {
+      if (index === position){
+        return !item;
+      } else {
+        return item;
+      }
+    });
+    // combining the total seconds of the poses that have been added to favorites
+    setCheckedState(updatedCheckState);
+    const totalSeconds = updatedCheckState.reduce(
+      (sum, currentState, index) => {
+        console.log(index)
+        if (currentState === true){
+          console.log(poseData[index].time)
+          return sum + poseData[index].time;
+        }
+        return sum;
+      },
+      0
+    );
+    setTotalSeconds(totalSeconds);
   }
 
-  // Checkbox checking, might not use
-  const [checked, setChecked] = React.useState(false);
-  const handleChange = () => {
-      setChecked(!checked);
-  }
 
-  //checkbox stencil code
+
+
+
+
+
+
+
+   // // function populate favorites list
+  // function addToList(item) {
+  //   // make deep copy of old list; add the item
+  //   const newList = [...list, item];
+  //   // set the state of the list to the update copy
+  //   setList(newList);
+  // }
+
+  // // Checkbox checking, might not use
+  // const [checked, setChecked] = React.useState(false);
+  // const handleChange = () => {
+  //     setChecked(!checked);
+  // }
+  //checkbox stencil code WILL USE LATER
   const Checkbox = ({ label, value, onChange }) => {
     return (
       <label>
@@ -59,6 +98,10 @@ function App() {
   };
 
   
+
+
+
+
   
    
   return (
@@ -107,14 +150,12 @@ function App() {
 
                 <h4>Other</h4>
                 <Nav onSelect={selectFilterType}>
-                  <Nav.Item> <Checkbox label="Favorites" eventKey="Favorites"/> </Nav.Item>
+                  <Nav.Item> <Nav.Link eventKey="Favorites"> Favorites</Nav.Link> </Nav.Item>
                 </Nav>
-                
-                <br></br>
                 <br></br>
                 
                 <span className="total">
-                    Favorites Total Seconds to Hold: 
+                    Favorites Total Hold Time: {totalSeconds}seconds
                 </span>
 
             </div>
@@ -122,19 +163,16 @@ function App() {
 
 
 
-  
-
-
+      {/* SHOWING ALL THE DATA ON THE SCREEN */}
       {filteredData.map((item, index) => ( 
-         <Pose key={item} item={item} handleClick={handleClick}/>
+         <Pose key={item} item={item} id={index} checked={checkedState[index]} handleClick={handleClick}/>
       ))}
 
 
-      {/* <p>Total Price: ${totalPrice}</p> */}
       <div>
-        <h2>Cart</h2>
+        <h2>Must populate favorites list</h2>
         {names.length == 0 ? null : names.map(
-          str => <p>{str}</p>
+          time => <p>cost: {time}</p>
         )}
       </div>
     </div>
