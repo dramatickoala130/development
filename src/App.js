@@ -8,9 +8,9 @@ import {Pose} from "./components/Pose";
 function App() {
   const [type, setType] = useState("All"); // displays all poses
   const [totalSeconds, setTotalSeconds] = useState(0); // displays total seconds to hold in favorites
-  const [names, setNames] = useState([]);
+  const [names, setNames] = useState([]); // names of the favorite poses
   const [selected, setSelected] = useState('popular'); // controlling the radio buttons
-  const [typesList, setTypesList] = useState([]);
+  const [typesList, setTypesList] = useState([]); //controls the list of filters that are on
 
 
   // lets users select a filter type
