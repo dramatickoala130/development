@@ -17,19 +17,12 @@ function App() {
   const [typesList, setTypesList] = useState([]);
   const [benefitsList, setBenefitsList] = useState([]);
 
-
-
-
-
   // lets users select a filter type
   const selectFilterType = eventKey => {
     const checked = eventKey.target.checked;
     const checkedValue = eventKey.target.value;
-    console.log(checked)
-    console.log(checkedValue)
     // a checkbox was checked, add it to the list of type filters checked
     if (checked === true){
-      console.log("entered into true")
       // make deep copy of old list; add the item
       const newTypesList = [...typesList, checkedValue];
       // set the state of the list to the update copy
@@ -44,14 +37,11 @@ function App() {
       }
       
     }else if (checked === false){
-      console.log(typesList)
       const removed = typesList.filter(object => { return object !== checkedValue});
-      console.log(removed);
       setTypesList(removed);
       if(removed.length === 0) {
         setType("All");
       }else if (removed.length === 1) {
-        console.log("REMAINING: " + removed[0]);
         setType(removed[0]);
       }else{
         setType(false);
@@ -70,7 +60,8 @@ function App() {
     } else if (type === item.benefit) {
       return true
     } else if (type === "Favorites") {
-      return false
+      console.log("Reached Favorites")
+      return true
     } else {
       return false
     }
@@ -156,15 +147,6 @@ function App() {
   // const handleChange = () => {
   //     setChecked(!checked);
   // }
-  //checkbox stencil code WILL USE LATER
-  const Checkbox = ({ label, value, onChange }) => {
-    return (
-      <label>
-        <input type="checkbox" checked={value} onChange={onChange} />
-        {label}
-      </label>
-    );
-  };
 
   
 
@@ -238,7 +220,7 @@ function App() {
 
       {/* SHOWING ALL THE DATA ON THE SCREEN */}
       {filteredData.map((item, index) => ( 
-         <Pose key={item} item={item} id={index} checked={checkedState[index]} handleClick={handleClick}/>
+         <Pose key={item} item={item} id={index} checked={checkedState[index]} isFavorite="false" handleClick={handleClick}/>
       ))}
 
 
