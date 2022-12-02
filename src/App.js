@@ -104,7 +104,6 @@ function App() {
   // function to handle the radio buttons
    const handleRadio = event => {
     setSelected(event.target.value);
-    filteredData();
    }
   
   // SORTING FUNCTION CODE
