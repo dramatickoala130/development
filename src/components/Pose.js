@@ -14,7 +14,7 @@ export function Pose({item, id, checked, handleClick}) {
                 <input type="checkbox"
                         id={id}
                         checked={checked}
-                        onChange={() => handleClick(id)}/>
+                        onChange={() => handleClick(id, item.name, checked)}/>
                 Add to Favorites!
             </label>
             {/* <button onClick={() => handleClick(item.time, item.name)}>Add to Favorites!</button> */}
