@@ -10,12 +10,54 @@ import Nav from 'react-bootstrap/Nav';
 function App() {
   const [type, setType] = useState("All"); // displays all poses
   const [totalSeconds, setTotalSeconds] = useState(0); // displays total seconds to hold in favorites
-  const [list, setList] = useState([]); // initialize an empty array
   const [names, setNames] = useState([]);
+  const [selected, setSelected] = useState('yes'); // controlling the radio buttons
+  // const [completeFilterData, setCompleteFilterData] = useState("popular");
+
+  const [typesList, setTypesList] = useState([]);
+  const [benefitsList, setBenefitsList] = useState([]);
+
+
+
+
 
   // lets users select a filter type
   const selectFilterType = eventKey => {
-    setType(eventKey);
+    const checked = eventKey.target.checked;
+    const checkedValue = eventKey.target.value;
+    console.log(checked)
+    console.log(checkedValue)
+    // a checkbox was checked, add it to the list of type filters checked
+    if (checked === true){
+      console.log("entered into true")
+      // make deep copy of old list; add the item
+      const newTypesList = [...typesList, checkedValue];
+      // set the state of the list to the update copy
+      setTypesList(newTypesList);
+
+      //only one filter is selected in types
+      if(newTypesList.length === 1){
+        setType(checkedValue);
+      }
+      else{
+        setType(false);
+      }
+      
+    }else if (checked === false){
+      console.log(typesList)
+      const removed = typesList.filter(object => { return object !== checkedValue});
+      console.log(removed);
+      setTypesList(removed);
+      if(removed.length === 0) {
+        setType("All");
+      }else if (removed.length === 1) {
+        console.log("REMAINING: " + removed[0]);
+        setType(removed[0]);
+      }else{
+        setType(false);
+      }
+      
+    }
   };
 
   // filtering function for TYPES and BENEFITS
@@ -37,8 +79,10 @@ function App() {
   // filters the complete data everytime the eventKey has been changed
   const filteredData = poseData.filter(matchesFilterType)
 
+
+
   // checking the state of the checkboxes for the favorites option
-  const [checkedState, setCheckedState] = useState(new Array(poseData.length).fill(false));
+  const [checkedState, setCheckedState] = useState(new Array(filteredData.length).fill(false));
 
   // function to handle the adding of the seconds in the favorites section
   const handleClick = (position) => {
@@ -54,10 +98,8 @@ function App() {
     setCheckedState(updatedCheckState);
     const totalSeconds = updatedCheckState.reduce(
       (sum, currentState, index) => {
-        console.log(index)
         if (currentState === true){
-          console.log(poseData[index].time)
-          return sum + poseData[index].time;
+          return sum + filteredData[index].time;
         }
         return sum;
       },
@@ -68,7 +110,34 @@ function App() {
 
 
 
+  //  // function to handle the adding of the seconds in the favorites section
+  //  const handleRadio = event => {
+  //   filteredData.sort((a, b) => a.rank - b.rank);
+  // LINE OF CODE ABOVE IS THE CODE TO SORT BASED ON WHETHER THE LEVEL RADIO BUTTON IS SELECTED. 
 
+  //     setSelected(event.target.value);
+  //  }
+
+   // filtering function for Sorting
+  // const matchesSortingType = () => {
+  //   if(selected === "popular") { 
+  //     return "popular"
+  //   } else if (selected === "level") {
+  //     return "level"
+  //   } else {
+  //     return false
+  //   }
+  // }
+   
+  // console.log(filteredData.sort((a, b) => a.rank - b.rank))
+
+  // filteredData.sort((a, b) => a.rank - b.rank);
+
+
+  // function finalData() {
+  //     filteredData.sort((a, b) => a.rank - b.rank);
+  // }
+  
 
 
 
@@ -117,41 +186,45 @@ function App() {
                 
                 <h4>Sort By</h4>
                 <label>
-                    <input type="radio"/> Popular
+                    <input  type="radio"
+                            id="popular"
+                            name="option"
+                            value="popular"
+                            checked={selected === 'popular'}
+                            // onChange={handleRadio}
+                            /> Popular
                     <br></br>
-                    <input type="radio"/> Level
+                    <input  type="radio"
+                            id="level"
+                            name="option"
+                            value="level"
+                            checked={selected === 'level'}
+                            // onChange={handleRadio}
+                            /> Level
                 </label>
                 <br></br>
                 <br></br>
 
                 <h4>Types</h4>
-                <Nav onSelect={selectFilterType}>
-                  <Nav.Item> <Nav.Link eventKey="Standing"> Standing</Nav.Link> </Nav.Item>
-                </Nav>
-                <Nav onSelect={selectFilterType}>
-                <Nav.Item> <Nav.Link eventKey="Seated"> Seated</Nav.Link> </Nav.Item>
-                </Nav>
-                <Nav onSelect={selectFilterType}>
-                <Nav.Item> <Nav.Link eventKey="Supine"> Supine</Nav.Link> </Nav.Item>
-                </Nav>
+                <label> <input type="checkbox" value="Standing" onChange={selectFilterType}/> Standing</label>
+                <br></br>
+                <label> <input type="checkbox" value="Seated" onChange={selectFilterType}/> Seated</label>
+                <br></br>
+                <label> <input type="checkbox" value="Supine" onChange={selectFilterType}/> Supine</label>
+                <br></br>
                 <br></br>
                 
                 <h4>Benefits</h4>
-                <Nav onSelect={selectFilterType}>
-                  <Nav.Item> <Nav.Link eventKey="Hips"> Hips</Nav.Link> </Nav.Item>
-                </Nav>
-                <Nav onSelect={selectFilterType}>
-                  <Nav.Item> <Nav.Link eventKey="Back"> Back</Nav.Link> </Nav.Item>
-                </Nav>
-                <Nav onSelect={selectFilterType}>
-                  <Nav.Item> <Nav.Link eventKey="Arms"> Arms</Nav.Link> </Nav.Item>
-                </Nav>
+                <label> <input type="checkbox" value="Hips" onChange={selectFilterType}/> Hips</label>
+                <br></br>
+                <label> <input type="checkbox" value="Back" onChange={selectFilterType}/> Back</label>
+                <br></br>
+                <label> <input type="checkbox" value="Arms" onChange={selectFilterType}/> Arms</label>
+                <br></br>
                 <br></br>
 
                 <h4>Other</h4>
-                <Nav onSelect={selectFilterType}>
-                  <Nav.Item> <Nav.Link eventKey="Favorites"> Favorites</Nav.Link> </Nav.Item>
-                </Nav>
+                <label> <input type="checkbox" value="Favorites" onChange={selectFilterType}/> Favorites</label>
                 <br></br>
                 
                 <span className="total">

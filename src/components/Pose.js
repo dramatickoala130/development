@@ -13,7 +13,7 @@ export function Pose({item, id, checked, handleClick}) {
             <label>
                 <input type="checkbox"
                         id={id}
-                        // checked={checked}
+                        checked={checked}
                         onChange={() => handleClick(id)}/>
                 Add to Favorites!
             </label>

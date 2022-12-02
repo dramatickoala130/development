@@ -5,7 +5,8 @@
         "type": "Seated",
         "benefit": "Hips", 
         "time": 25,
-        "image" : "images/garland.png"
+        "image": "images/garland.png",
+        "rank": "7"
     },
     {
         "name": "UPWARD FORWARD FOLD",
@@ -13,7 +14,8 @@
         "type": "Standing",
         "benefit": "Back", 
         "time": 30,
-        "image" : "images/fold.png"
+        "image" : "images/fold.png",
+        "rank": "1"
     },
     {
         "name": "STANDING HAND TO TOE",
@@ -21,7 +23,8 @@
         "type": "Standing",
         "benefit": "Hips", 
         "time": 15,
-        "image" : "images/hand_to_toe.png"
+        "image" : "images/hand_to_toe.png",
+        "rank": "8"
     },
     {
         "name": "SUPINE PIGEON",
@@ -29,7 +32,8 @@
         "type": "Supine",
         "benefit": "Hips", 
         "time": 30,
-        "image" : "images/pigeon.png"
+        "image" : "images/pigeon.png",
+        "rank": "2"
     },
     {
         "name": "CRANE",
@@ -37,7 +41,8 @@
         "type": "Seated",
         "benefit": "Arms", 
         "time": 5,
-        "image" : "images/crane.png"
+        "image" : "images/crane.png",
+        "rank": "9"
     },
     {
         "name": "HALF-BOUND LOTUS FORWARD FOLD",
@@ -45,7 +50,8 @@
         "type": "Standing",
         "benefit": "Hips", 
         "time": 10,
-        "image" : "images/lotus.png"
+        "image" : "images/lotus.png",
+        "rank": "11"
     },
     {
         "name": "EYE OF THE NEEDLE",
@@ -53,7 +59,8 @@
         "type": "Seated",
         "benefit": "Arms", 
         "time": 30,
-        "image" : "images/needle.png"
+        "image" : "images/needle.png",
+        "rank": "3"
     },
     {
         "name": "PLOW",
@@ -61,7 +68,8 @@
         "type": "Supine",
         "benefit": "Back", 
         "time": 10,
-        "image" : "images/plow.png"
+        "image" : "images/plow.png",
+        "rank": "10"
     },
     {
         "name": "WHEEL POSE",
@@ -69,7 +77,8 @@
         "type": "Supine",
         "benefit": "Back", 
         "time": 5,
-        "image" : "images/wheel.png"
+        "image" : "images/wheel.png",
+        "rank": "12"
     },
     {
         "name": "SEATED FORWARD BEND",
@@ -77,7 +86,8 @@
         "type": "Seated",
         "benefit": "Back", 
         "time": 30,
-        "image" : "images/bend.png"
+        "image" : "images/bend.png",
+        "rank": "4"
     },
     {
         "name": "GODDESS SQUAT",
@@ -85,7 +95,8 @@
         "type": "Standing",
         "benefit": "Hips", 
         "time": 15,
-        "image" : "images/goddess.png"
+        "image" : "images/goddess.png",
+        "rank": "5"
     },
     {
         "name": "TRIANGLE",
@@ -93,6 +104,7 @@
         "type": "Standing",
         "benefit": "Arms", 
         "time": 20,
-        "image" : "images/triangle.png"
+        "image" : "images/triangle.png",
+        "rank": "6"
     }
 ]
